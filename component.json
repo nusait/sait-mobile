@@ -1,0 +1,8 @@
+{
+	"name" : "SAIT Mobile",
+	"version" : "0.0.1",
+	"main" : "public/js/main.js",
+	"dependencies" : {
+		"scss-mixins": ">=0.0.1"
+	}
+}

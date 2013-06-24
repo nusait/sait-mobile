@@ -1,0 +1,116 @@
+@import "../assets/scss-mixins/mixin-display-flex";
+@import "../assets/scss-mixins/mixin-transform";
+@import "../assets/scss-mixins/mixin-transition";
+@-ms-viewport{ width: device-width; }
+$white: #eeeeee;
+$blue: blue;
+$yellow: yellow;
+$red: red;
+$green: green;
+$gray: #999999;
+
+$drawer-width: 250px;
+
+html{
+    overflow: hidden;
+    body {
+
+        -webkit-text-size-adjust: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+h1{
+    display: inline;
+}
+.viewport {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    //background-color: $green;
+    .drawer {
+        position: absolute;
+        width: $drawer-width;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        background: $gray;
+        nav {
+            a {
+                padding: 200px 10px;
+                color: $white;
+                display: block;
+                text-decoration: none;
+                &:hover{
+                    color: blue;
+                }
+            }
+        }
+    }
+    .main {
+        box-shadow: -2px 0px 15px rgba(0, 0, 0, 0.6);
+        @include transition(all 1s linear);
+        color: $white;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        //@include transform(translateX(0));
+        body.show-drawer &{
+            //@include transform(translateX($drawer-width));
+            @include transform(translate3d($drawer-width, 0 , 0));
+        }
+        .main-window{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            
+            @include display(flex);
+            @include flex-direction(column);
+            .header {
+                padding: 5px;
+                background-color: rgba(0, 0, 255, 1);
+            }
+            .middle {
+                .inner{
+                    position: relative;
+                    .content{
+                        padding: 5px;
+                        position: absolute;
+                    }
+                }
+                @include flex(1);
+                overflow-y: scroll;
+                background-color: $white;
+                color: $blue;
+                -webkit-overflow-scrolling: touch;
+            }
+            .footer {
+                padding: 5px;
+                background-color: $red;
+            }
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
