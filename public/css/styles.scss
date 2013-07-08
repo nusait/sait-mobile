@@ -46,6 +46,9 @@ h1{
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         background: $gray;
+        &::-webkit-scrollbar { 
+                display: none; 
+        }
         nav {
             a {
                 padding: 200px 10px;
